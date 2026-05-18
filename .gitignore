@@ -61,4 +61,4 @@ dkms.conf
 scan.xml
 output/scan.xml
 Data_view/lib/
-dataview/nmap_interactive_map.html
+Data_view/nmap_interactive_map.html
