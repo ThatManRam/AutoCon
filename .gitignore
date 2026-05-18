@@ -62,3 +62,5 @@ scan.xml
 output/scan.xml
 Data_view/lib/
 Data_view/nmap_interactive_map.html
+nmap_interactive_map.html
+output/nmap_interactive_map.html
