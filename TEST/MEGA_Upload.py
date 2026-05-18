@@ -1,7 +1,7 @@
 import os
-from datetime import date
 from dotenv import load_dotenv
 from mega import Mega
+import argparse
 
 load_dotenv()
 
@@ -11,21 +11,28 @@ password = os.getenv("MEGA_PASSWORD")
 if not email or not password:
     raise ValueError("MEGA_EMAIL or MEGA_PASSWORD is missing from .env")
 
+parser = argparse.ArgumentParser(description="Upload a file to a MEGA folder")
+parser.add_argument("Foldername", help="Folder to create/use")
+parser.add_argument("File", help="File to upload")
+
+args = parser.parse_args()
+
 mega = Mega()
 m = mega.login(email, password)
 
-# Folder name like: 2026-05-16
-folder_name = date.today().isoformat()
+# Folder name from command-line argument
+folder_name = args.Foldername
 
-# Create the dated folder
+# Creates the folder if missing, or returns the existing one
 folder = m.create_folder(folder_name)
 
-# Get that folder's MEGA node ID
+# Get the MEGA folder node ID
 folder_id = folder[folder_name]
 
-# Upload file into the dated folder
-uploaded_file = m.upload("Test.txt", dest=folder_id)
+# Upload file into that folder
+uploaded_file = m.upload(args.File, dest=folder_id)
 
 link = m.get_upload_link(uploaded_file)
+
 print(f"File uploaded to folder '{folder_name}'!")
 print(f"Link: {link}")

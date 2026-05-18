@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.95 scan initiated Sun May 17 21:21:05 2026 as: /usr/lib/nmap/nmap -&#45;privileged -sS -sU -p- -sV -O -&#45;version-all -oX scan.xml 192.168.1.0/24 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -sS -sU -p- -sV -O -&#45;version-all -oX scan.xml 192.168.1.0/24" start="1779067265" startstr="Sun May 17 21:21:05 2026" version="7.95" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<scaninfo type="udp" protocol="udp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.1" addrtype="ipv4"/>
+<address addr="48:5D:36:C6:AE:AC" addrtype="mac" vendor="Verizon"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.7" addrtype="ipv4"/>
+<address addr="AC:89:95:83:95:EF" addrtype="mac" vendor="AzureWave Technology"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.157" addrtype="ipv4"/>
+<address addr="4C:EF:C0:8F:BF:71" addrtype="mac" vendor="Amazon Technologies"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.164" addrtype="ipv4"/>
+<address addr="22:26:C2:87:19:C4" addrtype="mac"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.198" addrtype="ipv4"/>
+<address addr="62:22:70:FF:10:42" addrtype="mac"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.210" addrtype="ipv4"/>
+<address addr="28:73:F6:2A:6C:5C" addrtype="mac" vendor="Amazon Technologies"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.254" addrtype="ipv4"/>
+<address addr="E0:BB:9E:F2:AA:9B" addrtype="mac" vendor="Seiko Epson"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.166" addrtype="ipv4"/>
+<address addr="08:57:FB:72:F3:AA" addrtype="mac" vendor="Amazon Technologies"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<taskprogress task="SYN Stealth Scan" time="1779067416" percent="55.63" remaining="119" etc="1779067534"/>
+<taskprogress task="SYN Stealth Scan" time="1779067678" percent="76.82" remaining="124" etc="1779067802"/>
+<taskprogress task="SYN Stealth Scan" time="1779068244" percent="84.78" remaining="176" etc="1779068419"/>
+<taskprogress task="SYN Stealth Scan" time="1779069620" percent="94.23" remaining="145" etc="1779069764"/>
+<taskprogress task="SYN Stealth Scan" time="1779070118" percent="96.49" remaining="104" etc="1779070222"/>
+<taskprogress task="SYN Stealth Scan" time="1779071821" percent="98.49" remaining="70" etc="1779071891"/>
+<taskprogress task="SYN Stealth Scan" time="1779072701" percent="99.52" remaining="27" etc="1779072727"/>
+<taskprogress task="UDP Scan" time="1779073515" percent="13.68" remaining="2216" etc="1779075730"/>
+<taskprogress task="UDP Scan" time="1779075447" percent="17.68" remaining="10632" etc="1779086079"/>
+<taskprogress task="UDP Scan" time="1779076982" percent="20.63" remaining="14691" etc="1779091672"/>
+<taskprogress task="UDP Scan" time="1779077618" percent="21.86" remaining="15924" etc="1779093542"/>
