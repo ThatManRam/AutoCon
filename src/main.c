@@ -11,7 +11,7 @@
 
 
 
-int main(void) {
+int main(int argc, char *argv[]) {
     char subnet[SUBNET_BUFFER_SIZE];
 
     printf("[*] Detecting local subnet...\n");
@@ -47,22 +47,28 @@ int main(void) {
      * Example dig calls.
      * You can remove these or make them optional later.
      */
-    printf("[*] Running DNS lookup for example.com...\n");
 
-    if (run_dig_lookup("example.com", "DIG_EXAMPLE_FILE") != 0) {
-        fprintf(stderr, "dig lookup failed.\n");
-    }
+    if (argc >= 2 && strcmp(argv[1], "dig") == 0) {
+        printf("[*] Running DNS lookup for example.com...\n");
 
-    printf("[*] Running reverse DNS lookup for 8.8.8.8...\n");
+        if (run_dig_lookup("example.com", DIG_EXAMPLE_FILE) != 0) {
+            fprintf(stderr, "dig lookup failed.\n");
+        }
 
-    if (run_reverse_dig_lookup("8.8.8.8", "DIG_REVERSE_FILE") != 0) {
-        fprintf(stderr, "reverse dig lookup failed.\n");
+        printf("[*] Running reverse DNS lookup for 8.8.8.8...\n");
+
+        if (run_reverse_dig_lookup("8.8.8.8", DIG_REVERSE_FILE) != 0) {
+            fprintf(stderr, "reverse dig lookup failed.\n");
+        }
+
+        printf("[+] DNS lookup saved to: %s\n", DIG_EXAMPLE_FILE);
+        printf("[+] Reverse DNS lookup saved to: %s\n", DIG_REVERSE_FILE);
+    } else {
+        printf("[*] Skipping dig lookups. Run with 'dig' to enable them.\n");
     }
 
     printf("[+] Report written to: %s\n", REPORT_FILE);
     printf("[+] Raw Nmap XML saved to: %s\n", XML_FILE);
-    printf("[+] DNS lookup saved to: %s\n", DIG_EXAMPLE_FILE);
-    printf("[+] Reverse DNS lookup saved to: %s\n", DIG_REVERSE_FILE);
 
 
 

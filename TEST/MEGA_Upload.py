@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from mega import Mega
 import argparse
@@ -11,28 +12,38 @@ password = os.getenv("MEGA_PASSWORD")
 if not email or not password:
     raise ValueError("MEGA_EMAIL or MEGA_PASSWORD is missing from .env")
 
-parser = argparse.ArgumentParser(description="Upload a file to a MEGA folder")
-parser.add_argument("Foldername", help="Folder to create/use")
-parser.add_argument("File", help="File to upload")
+parser = argparse.ArgumentParser(description="Upload files to MEGA")
+parser.add_argument("Foldername", help="Remote MEGA folder name")
+parser.add_argument("Path", help="Local file or directory to upload")
 
 args = parser.parse_args()
+
+folder_name = args.Foldername
+local_path = Path(args.Path)
+
+if not local_path.exists():
+    raise FileNotFoundError(f"Path does not exist: {local_path}")
 
 mega = Mega()
 m = mega.login(email, password)
 
-# Folder name from command-line argument
-folder_name = args.Foldername
-
-# Creates the folder if missing, or returns the existing one
+# Create remote dated folder in MEGA
 folder = m.create_folder(folder_name)
-
-# Get the MEGA folder node ID
 folder_id = folder[folder_name]
 
-# Upload file into that folder
-uploaded_file = m.upload(args.File, dest=folder_id)
+# If a single file was provided, upload it
+if local_path.is_file():
+    uploaded_file = m.upload(str(local_path), dest=folder_id)
+    print(f"Uploaded: {local_path.name}")
 
-link = m.get_upload_link(uploaded_file)
+# If a directory was provided, upload every file directly inside it
+elif local_path.is_dir():
+    for file_path in local_path.iterdir():
+        if file_path.is_file():
+            m.upload(str(file_path), dest=folder_id)
+            print(f"Uploaded: {file_path.name}")
 
-print(f"File uploaded to folder '{folder_name}'!")
-print(f"Link: {link}")
+    print(f"All files from '{local_path}' uploaded to MEGA folder '{folder_name}'.")
+
+else:
+    raise ValueError(f"Unsupported path type: {local_path}")
