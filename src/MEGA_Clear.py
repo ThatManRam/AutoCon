@@ -1,6 +1,9 @@
 import os
+import sys
 from dotenv import load_dotenv
 from mega import Mega
+
+sys.stdout.reconfigure(errors="backslashreplace")
 
 load_dotenv()
 
@@ -29,7 +32,7 @@ for file_id, file_data in files.items():
 
     name = file_data.get("a", {}).get("n", "Unknown")
 
-    print(f"Moving to trash: {name} ({file_id})")
+    print(f"Moving to trash: {name!r} ({file_id})")
     m.delete(file_id)
     deleted_count += 1
 

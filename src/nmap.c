@@ -17,7 +17,6 @@ int run_nmap(const char *subnet) {
         char *args[] = {
             "nmap",
             "-sS",
-            "-sU",
             "-p-",
             "-sV",
             "-O",
