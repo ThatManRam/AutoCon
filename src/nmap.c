@@ -17,7 +17,7 @@ int run_nmap(const char *subnet) {
         char *args[] = {
             "nmap",
             "-sS",
-            "-p-",
+ //delete for all ports "-p-",
             "-sV",
             "-O",
             "--version-all",
